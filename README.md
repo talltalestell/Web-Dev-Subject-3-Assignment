@@ -27,6 +27,7 @@ This assignment focuses on building a frontend web application that connects to 
 - `pages/`: HTML files
 - `data/`: Optional JSON
 - `assets/`: Optional images
+- `index.html`: **You must create this file yourself in the root folder**. It should act as the main entry point for your application and include a form that fetches data from the API.
 
 ## 💡 Tips
 
@@ -38,3 +39,4 @@ This assignment focuses on building a frontend web application that connects to 
 ## 📸 Submission
 
 Push to GitHub and submit the repo link.
+
