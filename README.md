@@ -6,37 +6,88 @@ This assignment focuses on building a frontend web application that connects to 
 
 ## ✅ Requirements Checklist
 
-- [ ] At least 10 files (.html, .js, .css, .json)
-- [ ] Fetch live data from the REST API and display it
-- [ ] Update data via the REST API (POST, PUT, or DELETE)
-- [ ] Use fetch() or axios
-- [ ] Test in two browsers
-- [ ] Use JavaScript to update the DOM
-- [ ] Validate your code and test for errors
-- [ ] Use good data organisation and styling
+- [x] At least 10 files (.html, .js, .css, .json)
+- [x] Fetch live data from the REST API and display it
+- [x] Update data via the REST API (POST, PUT)
+- [x] Use `fetch()` or `axios`
+- [x] Test in two browsers
+- [x] Use JavaScript to update the DOM
+- [x] Validate your code and test for errors
+- [x] Use good data organisation and styling
 
-## 🔗 API Endpoint Info
+## 🧭 Student Responsibility
 
-- Base URL: `https://your-api-url.com/api/v1`
-- Example: `GET /users`
+> ⚠️ You must create the `index.html` file in the root folder of your repository.
 
-## 📁 Project Structure
+It should serve as your home page with links to your other subpages.
 
-- `css/`: Styles
-- `js/`: JavaScript logic
-- `pages/`: HTML files
-- `data/`: Optional JSON
-- `assets/`: Optional images
-- `index.html`: **You must create this file yourself in the root folder**. It should act as the main entry point for your application and include a form that fetches data from the API.
+---
+
+## 📡 Available REST API Endpoints
+
+| Method | Endpoint                            | Description                      | Request Body Required? | Example Call                                |
+|--------|-------------------------------------|----------------------------------|-------------------------|---------------------------------------------|
+| `GET`  | `/teach/users`                      | Get a list of all users          | ❌                      | `/teach/users`                              |
+| `GET`  | `/teach/users/{id}`                 | Get a single user by ID          | ❌                      | `/teach/users/43`                           |
+| `PUT`  | `/teach/users/{id}`                 | Update user address details      | ✅ JSON                 | `/teach/users/43`                           |
+| `POST` | `/teach/users/{id}/upload-image`    | Upload profile image (avatar)    | ✅ FormData             | `/teach/users/43/upload-image`             |
+| `GET`  | `/teach/users/{id}/audit`           | Get audit history for user       | ❌                      | `/teach/users/43/audit`                     |
+
+### 🧪 Headers and Setup
+- Use `Content-Type: application/json` for PUT requests
+- Use `multipart/form-data` for file uploads
+
+### 📦 Example PUT Request Body
+```json
+{
+  "address_1": "123 Main St",
+  "address_2": "Unit 5",
+  "address_3": "Level 2",
+  "city": "Melbourne",
+  "state": "VIC",
+  "postcode": "3000"
+}
+```
+
+---
+
+## 📁 Suggested Project Structure
+
+```
+Web Dev Subject 3 Assignment/
+├── index.html
+├── profile.html
+├── edit.html
+├── upload.html
+├── data-view.html
+├── todo.html
+├── forms.html
+├── help.html
+├── legal.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── data/
+│   └── sample.json
+└── README.md
+```
+
+---
+
+## 📸 Submission Instructions
+
+- Push your files to a GitHub repository
+- Share the GitHub repo URL with your trainer
+
+---
 
 ## 💡 Tips
 
-- Use `DOMContentLoaded`
-- Use console logging and browser dev tools
-- Use semantic HTML5 tags
-- Test on Chrome + Firefox
+- Use `DOMContentLoaded` when writing scripts
+- Use browser dev tools to debug
+- Validate your HTML and CSS using W3C tools
+- Use semantic HTML tags and organised file naming
+- Stick to Bootstrap styling for consistency
 
-## 📸 Submission
-
-Push to GitHub and submit the repo link.
-
+Good luck — and don't forget to test your app in **at least two browsers**! ✅
