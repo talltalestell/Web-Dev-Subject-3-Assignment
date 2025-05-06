@@ -30,7 +30,7 @@
         <ul class="navbar-nav ms-auto d-flex align-items-center">
           <li class="nav-item"><a class="nav-link active btn btn-success" href="www.youtube.com/watch?v=UHKHPybcLuc&ab_channel=MEMEINDUSTRIESARCHIVE">Logout</a></li>
           <li class="nav-item">
-            <a class="nav-link active py-0 my-0" href="profile.html"><img id="profile-image" src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image p-0 m-0" /></a>
+            <a class="nav-link active py-0 my-0" href="profile.html"><img id="pfp-image" src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image p-0 m-0" /></a>
           </li>
         </ul>
       </div>
@@ -73,6 +73,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    const BASE_API_URL = 'https://mx.velodata.org/api/v2';
     const userId = 43;
 
     async function fetchUserProfile() {
@@ -83,6 +84,7 @@
         const attrs = data.attributes;
 
         document.getElementById('profile-image').src = attrs.profile_image || 'https://via.placeholder.com/150';
+        document.getElementById('pfp-image').src = attrs.profile_image || 'https://via.placeholder.com/150';
         document.getElementById('user-name').textContent = attrs.name || 'No Name Provided';
         document.getElementById('user-email').textContent = attrs.email || 'No Email Provided';
         document.getElementById('user-address').textContent = `${attrs.address_1 || ''} ${attrs.address_2 || ''} ${attrs.city || ''} ${attrs.state || ''} ${attrs.postcode || ''}`.trim();
