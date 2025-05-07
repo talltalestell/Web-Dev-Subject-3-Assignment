@@ -1,5 +1,3 @@
-// Insert Advanced Code 01 here...
-
 const todoInput = document.getElementById("todo-input");
 const addTodoButton = document.getElementById("add-todo");
 const clearCompletedButton = document.getElementById("clear-completed");
@@ -28,12 +26,10 @@ function loadTodos() {
     todos.forEach(renderTodo);
 }
 
-//Function to save TODOs to localStorage
+// Function to save TODOs to localStorage
 function saveTodosToLocalStorage(todos) {
-    localStorage.setItem("todos",JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
-
-// Insert Advanced Code 02 here...
 
 // Function to add a TODO via API & localStorage
 function addTodo() {
@@ -43,7 +39,11 @@ function addTodo() {
         return;
     }
 
-    const newTodo = { text: todoText, completed: false };
+    const newTodo = { 
+        text: todoText, 
+        completed: false, 
+        timestamp: new Date().toLocaleString([], { dateStyle: 'short', timeStyle: 'short',hour12: false}) // Store the current time as a timestamp
+    };
 
     // Save to localStorage
     let todos = JSON.parse(localStorage.getItem("todos")) || [];
@@ -54,39 +54,69 @@ function addTodo() {
     setLoading(true);
     setTimeout(() => {
         renderTodo(newTodo);
-        todoInput.value= "";
+        todoInput.value = "";
         showMessage("TODO added successfully!");
         setLoading(false);
     }, 1000);
 }
 
-// Function to render a TODO item
+// Function to render a TODO item in a table row
 function renderTodo(todo) {
-    const li = document.createElement("li");
-    li.textContent = todo.text;
+    const row = document.createElement("tr");
+
+    // Create table cells for todo text, checkbox, and timestamp
+    const textCell = document.createElement("td");
+    textCell.textContent = todo.text;
+
+    const checkboxCell = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = todo.completed;
+    checkbox.addEventListener("change", () => toggleComplete(todo.text, row, checkbox));
+
+    checkboxCell.appendChild(checkbox);
+
+    const timestampCell = document.createElement("td");
+    timestampCell.textContent = todo.timestamp;
+
+    // Center the checkbox and time cells so that they look sleek like a Mercedes
+    checkboxCell.classList.add("d-flex"); // I ended up fixing it by applying a style to the checkbox element. And hey, there is nothing as permanent as a temporary solution
+    timestampCell.classList.add("text-center");
+
+
+    // Append cells to the row
+    row.appendChild(textCell);
+    row.appendChild(timestampCell);
+    row.appendChild(checkboxCell);
+
+    // Apply styles if the todo is completed
     if (todo.completed) {
-        li.classList.add("completed");
+        row.classList.add("completed");
+        checkbox.checked = true; // Ensure the checkbox is checked if completed
     }
 
-    li.addEventListener("click", () => togglecomplete(todo.text, li));
-    todoList.appendChild(li);
+    // Add the row to the table
+    todoList.appendChild(row);
 }
 
-
-// Insert Advanced Code 03 here...
-
-// Function to toggle TODO copmletion and update localStorage
-function toggleComplete(todoText, li) {
+// Function to toggle TODO completion and update localStorage
+function toggleComplete(todoText, row, checkbox) {
     let todos = JSON.parse(localStorage.getItem("todos")) || [];
-    todos = todo.map(todo => {
+    todos = todos.map(todo => {
         if (todo.text === todoText) {
-            todo.completed !=todo.completed;
+            todo.completed = checkbox.checked; // Update the completed status based on checkbox
         }
         return todo;
     });
 
     saveTodosToLocalStorage(todos);
-    li.classList.toggle("completed");
+
+    // Apply or remove the completed styles when checkbox is toggled
+    if (checkbox.checked) {
+        row.classList.add("completed");
+    } else {
+        row.classList.remove("completed");
+    }
 }
 
 // Function to clear completed TODOs
@@ -96,7 +126,7 @@ function clearCompleted() {
     saveTodosToLocalStorage(todos);
 
     // Remove completed items from UI
-    document.querySelectorAll(".completed").forEach(todo => todo.remove());
+    document.querySelectorAll(".completed").forEach(row => row.remove());
     showMessage("Completed TODOs Cleared!");
 }
 
@@ -104,7 +134,7 @@ function clearCompleted() {
 addTodoButton.addEventListener("click", addTodo);
 clearCompletedButton.addEventListener("click", clearCompleted);
 todoInput.addEventListener("keypress", function (event) {
-    if (event.key === "enter") {
+    if (event.key === "Enter") {
         addTodo();
     }
 });

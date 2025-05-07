@@ -6,24 +6,19 @@
   <title>Todo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .form-wrapper {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  </style>
+  <link rel="icon" type="image/x-icon" href="/assets/aero-logo-mid.png">
 </head>
 <body style="min-height: 100vh;">
  <!-- Header Navbar -->
  <nav class=" navbar navbar-expand-lg navbar-dark headerbar">
   <div class="container-fluid ">
-    <a class="navbar-brand" href="index.html">TOs & DOs <span class="text-muted">Admin Center</span></a>
+    <a class="navbar-brand" href="index.html">TOs & DOs  <span class="text-muted"> <i class="bi bi-gear-wide-connected" width="16" height="16" fill="currentColor"></i> Admin Center</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto d-flex align-items-center">
-        <li class="nav-item"><a class="nav-link active btn btn-success" href="www.youtube.com/watch?v=UHKHPybcLuc&ab_channel=MEMEINDUSTRIESARCHIVE">Logout</a></li>
+        <li class="nav-item"><a class="nav-link active btn btn-success" href="https://www.youtube.com/watch?v=UHKHPybcLuc&ab_channel=MEMEINDUSTRIESARCHIVE">Logout</a></li>
         <li class="nav-item">
           <a class="nav-link active py-0 my-0" href="profile.html"><img id="profile-image" src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image p-0 m-0" /></a>
         </li>
@@ -45,10 +40,7 @@
       <li class="nav-item"><a class="nav-link" href="data-view.html">View All Users</a></li>
       <li class="nav-item"><a class="nav-link" href="edit.html">Edit User Details</a></li>
       <li class="nav-item"><a class="nav-link" href="upload.html">Upload User Image</a></li>
-      <li class="nav-item"><a class="nav-link" href="stats.html">Stats</a></li>
       <li class="nav-item"><a class="nav-link active" href="todo.html">Todo List Management</a></li>
-      <li class="nav-item"><a class="nav-link" href="forms.html">Forms</a></li>
-      <li class="nav-item"><a class="nav-link" href="help.html">Help</a></li>
       <li class="nav-item"><a class="nav-link" href="legal.html">Light Reading/Legal</a></li>
       <li class="nav-item"><a class="nav-link" href="api.html">API Reference</a></li>
       </ul>
@@ -57,19 +49,39 @@
 
 
   <!-- Page Content -->
-  <div class="container text-start">
-    <div class="form-wrapper">
+  <div class="container text-start ">
+    <div class="form-wrapper mt-3">
       <h1>Things to do today  -  The Javascript TODO App</h1>
     <p id="status-message"></p>
     <div id="loading" style="display: none;">Loading...</div>
-    <input type="text" id="todo-input" placeholder="Enter a new TODO">
-    <button id="add-todo">Add TODO</button>
-    <button id="clear-completed">Clear Completed</button>
-    <ul id="todo-list"></ul>
+    <div class="container-fluid">
+      <div class="row g-3 justify-content-center">
+        <div class="col-8">
+          <input type="text" id="todo-input" placeholder="Enter a new TODO" class="form-control">
+        </div>
+        <div class="col-lg text-center">
+          <button id="add-todo" class="btn btn-success mx-2">Add TODO</button>
+        </div>
+      </div>
+    </div>  
+      <div class="py-5">
+        <table id="todo-list" class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th>Todo</th>
+              <th class="text-center">Created</th>
+              <th class="text-center">Done?</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="text-center">
+      <button id="clear-completed" class="btn btn-danger mx-2">Clear Completed</button>
     </div>
   </div>
 
-  <script src="/js/todo.js"></script>
+  <script src="/js/todo-new.js"></script>
 
   <!-- PFP Script -->
   <script>
