@@ -18,14 +18,17 @@ footer {
 .pagebody {
   background-color: #141414;
   min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  
+
+  
+  
   
 }
 
 .body-main {
-  
+  /* display: flex; */
+  justify-content:center ;
+  align-items: center;
   
 }
 
