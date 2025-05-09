@@ -18,11 +18,21 @@ footer {
 .pagebody {
   background-color: #141414;
   min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.body-main {
+  
+  
 }
 
 /* #### The Header Nav Bar #### */
 .headerbar {
   background-color: #1b1a19;
+  background: linear-gradient(135deg,#1b1a19, #181818 );
 }
 .navbar img {
   object-fit: scale-down;
@@ -33,12 +43,16 @@ footer {
 .navbar {
   position: sticky ;
   top: 0;
+  
 }
 
 /* #### SIDE NAVBAR #### */
 
 .sidebar {
-  color: white
+  color: white;
+  max-width: fit-content;
+  min-width: fit-content;
+  
 }
 
 .bg-sidebar {
